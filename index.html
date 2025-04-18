@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addressing Undergraduate Mental Health Through Tailored Mentorship Programs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Adding Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Mental Health Research</div>
+            <ul class="nav-links">
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#findings">Key Findings</a></li>
+                <li><a href="#visualizations">Impact Data</a></li>
+                <li><a href="#interactive">Support Tools</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+        <div class="hero">
+            <h1>Addressing Undergraduate Mental Health Through Tailored Mentorship Programs</h1>
+            <p class="subtitle">A multimodal exploration of challenges, impacts, and innovative support systems for diverse student populations</p>
+            <a href="#introduction" class="cta-button">Explore Research</a>
+        </div>
+    </header>
+    
+    <main>
+        <section id="introduction" class="section">
+            <div class="container">
+                <h2>Introduction</h2>
+                <div class="flex-container">
+                    <div class="text-content">
+                        <p>While universities promote academic excellence and personal growth, they often overlook the unintended consequences of relentless pressure and cultural displacement on student mental health. Despite the availability of counseling services at most institutions, these reactive approaches fail to address the deeper, systemic issues that contribute to anxiety, burnout, and self-doubt.</p>
+                        <p>As a computer science major with an international background, I've witnessed firsthand how intense academic demands, cultural transitions, and isolation affect students across diverse populations and disciplines.</p>
+                        <blockquote>
+                            "This research aims to explore the potential of mentorship programs as a holistic approach to promoting mental health among undergraduate students, with a focus on the experiences of specific subgroups."
+                            <cite>— Rustam Israilov</cite>
+                        </blockquote>
+                        <p>By examining the impact of academic pressures, social transitions, and cultural adjustments on Community College Transfer (CCT) students, international students, and student-athletes, this research seeks to develop proactive strategies for universities to create inclusive and supportive learning environments.</p>
+                    </div>
+                    <div class="media-content">
+                        <div class="image-container">
+                            <img src="" alt="" class="featured-image">
+                            <p class="image-caption">Many students face isolation and mental health challenges amid academic pressures</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="findings" class="section alternate">
+            <div class="container">
+                <h2>Key Research Findings</h2>
+                <div class="cards-container">
+                    <div class="finding-card">
+                        <div class="card-icon"><i class="fas fa-brain"></i></div>
+                        <h3>Academic Pressures</h3>
+                        <p>Heavy study loads strongly correlate with depression, particularly among CCT students who average 34.5 credits and experience "transfer shock" when adapting to new institutions.</p>
+                    </div>
+                    <div class="finding-card">
+                        <div class="card-icon"><i class="fas fa-globe-americas"></i></div>
+                        <h3>Cultural Challenges</h3>
+                        <p>International students face culture shock and difficulty adapting to new environments, often detaching them from traditional support systems.</p>
+                    </div>
+                    <div class="finding-card">
+                        <div class="card-icon"><i class="fas fa-theater-masks"></i></div>
+                        <h3>Expectation vs. Reality</h3>
+                        <p>The mismatch between idealized college expectations and reality can trigger anxiety and depression, especially when students feel they are "doing college wrong."</p>
+                    </div>
+                    <div class="finding-card">
+                        <div class="card-icon"><i class="fas fa-hands-helping"></i></div>
+                        <h3>Tailored Support</h3>
+                        <p>Effective mental health support must be tailored to diverse student populations, with different approaches for transfer, international, and student-athlete groups.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="visualizations" class="section">
+            <div class="container">
+                <h2>The Impact of Mental Health Challenges</h2>
+                <div class="visualization-container">
+                    <div class="visualization">
+                        <div class="chart-container">
+                            <canvas id="mentalHealthChart"></canvas>
+                        </div>
+                        <div class="chart-description">
+                            <h3>Prevalence of Mental Health Concerns</h3>
+                            <p>According to the 2023 National College Health Assessment, 76% of undergraduate students reported experiencing moderate to serious psychological distress that affected their ability to function effectively.</p>
+                            <p>These struggles extend across disciplines and backgrounds, impacting students' academic performance, retention, and overall wellbeing.</p>
+                        </div>
+                    </div>
+                    <div class="visualization">
+                        <div class="chart-container">
+                            <canvas id="mentalHealthImpactChart"></canvas>
+                        </div>
+                        <div class="chart-description">
+                            <h3>College Impact on Mental Health</h3>
+                            <p>Bryant and Welding (2024) observed that over half (51%) of surveyed students reported that their mental health worsened while in college, indicating that the stress of college life is often more than anticipated.</p>
+                            <p>This disconnect between expectations and reality can lead to increased levels of stress as students struggle to reconcile their idealized expectations with their experiences.</p>
+                        </div>
+                    </div>
+                    <div class="visualization">
+                        <div class="chart-container">
+                            <canvas id="academicBurdenChart"></canvas>
+                        </div>
+                        <div class="chart-description">
+                            <h3>Diagnosed Mental Health Conditions</h3>
+                            <p>The American College Health Association's Spring 2023 survey revealed that anxiety (36%) and depression (28%) are the most commonly diagnosed mental health conditions among college students.</p>
+                            <p>Other conditions like trauma-related disorders (8%), eating disorders (7%), and OCD (7%) also significantly affect student populations, highlighting the need for diverse support approaches.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mentorship" class="section">
+            <div class="container">
+                <h2>The Value of Mentorship Programs</h2>
+                <div class="flex-container">
+                    <div class="text-content">
+                        <h3>Beyond Traditional Counseling</h3>
+                        <p>"Counseling centers have seen extraordinary increases in demand over the past decade," notes Michael Gerard Mason, PhD, associate dean of African American Affairs at the University of Virginia (UVA). "Even if we continue hiring, I don't think we could ever staff our way out of this challenge."</p>
+                        <p>Schools across the country are embracing more innovative approaches to support student mental health, recognizing that many students benefit from peer connections and mentorship rather than traditional one-on-one therapy alone.</p>
+                        <blockquote>
+                            "This increase in demand has challenged institutions to think holistically and take a multifaceted approach to supporting students. It really has to be everyone's responsibility at the university to create a culture of well-being."
+                            <cite>— Kevin Shollenberger, Vice Provost for Student Health and Well-being at Johns Hopkins University</cite>
+                        </blockquote>
+                    </div>
+                    <div class="media-content">
+                        <div class="image-container">
+                            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Students in a mentorship discussion" class="featured-image">
+                            <p class="image-caption">Peer mentorship programs provide crucial support networks for students facing mental health challenges</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex-container peer-support-section">
+                    <div class="text-content">
+                        <h3>Peer Support: The Power of Connection</h3>
+                        <p>Research shows that approximately 75% of students reach out to peers first when experiencing distress, while only about 11% contact faculty or staff. This highlights the critical role that structured peer mentorship programs can play in creating effective support networks.</p>
+                    </div>
+                    <div class="metrics-container">
+                        <div class="metrics-highlight">
+                            <div class="metric">
+                                <span class="metric-number">75%</span>
+                                <span class="metric-label">of students reach out to peers first when in distress</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-number">11%</span>
+                                <span class="metric-label">contact faculty or staff for initial support</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mentorship-benefits">
+                    <h3>Benefits of Mentorship-Based Approaches</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                            <h4>Social Connection</h4>
+                            <p>Mentorship programs leverage the crucial role of social connection in maintaining and restoring mental health.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                            <h4>Cultural Competence</h4>
+                            <p>Peer programs can reach underserved groups who may be less likely to seek services at traditional counseling centers.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon"><i class="fas fa-arrow-right"></i></div>
+                            <h4>Accessibility</h4>
+                            <p>Students often find peer mentorship more approachable and less stigmatizing than formal counseling services.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon"><i class="fas fa-compass"></i></div>
+                            <h4>Navigation Support</h4>
+                            <p>Mentors help students identify and access appropriate university resources based on their specific needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="interactive" class="section alternate">
+            <div class="container">
+                <h2>Support Tools</h2>
+                <div class="interactive-element">
+                    <h3>Self-Assessment Tool</h3>
+                    <p>This interactive tool allows students to assess their current mental wellbeing and receive tailored resource recommendations based on their specific student profile and needs.</p>
+                    <button class="interactive-button" id="assessmentButton">Try the Assessment</button>
+                    <div id="assessmentContent" class="hidden-content">
+                        <!-- Self-assessment form will be generated here by JavaScript -->
+                    </div>
+                </div>
+                <div class="interactive-element">
+                    <h3>Mentorship Resource Finder</h3>
+                    <p>Find mentorship and support resources tailored to your specific student background, including specialized programs for transfer students, international students, and student-athletes.</p>
+                    <button class="interactive-button" id="resourceFinderButton">Find Resources</button>
+                    <div id="resourceFinderContent" class="hidden-content">
+                        <!-- Resource finder will be generated here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resources" class="section alternate">
+            <div class="container">
+                <h2>Mentorship Programs & Resources</h2>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <h3>Transfer Student Network</h3>
+                        <p>Support specifically designed for Community College Transfer students to navigate "transfer shock" and the unique challenges of reestablishing themselves in a new academic environment.</p>
+                        <a href="https://transfernation.com/" class="resource-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card">
+                        <h3>International Student Mentorship</h3>
+                        <p>Cultural adaptation support and mentoring specifically for international students facing acculturation difficulties and detachment from traditional support systems.</p>
+                        <a href="#" class="resource-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card">
+                        <h3>Student-Athlete Support</h3>
+                        <p>Specialized mentoring that understands the dual pressures of athletic performance and academic responsibilities, with strategies to prevent burnout.</p>
+                        <a href="#" class="resource-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card">
+                        <h3>Mental Health America</h3>
+                        <p>Comprehensive resources for college students, including screening tools, peer support options, and guides to finding affordable mental health care on and off campus.</p>
+                        <a href="https://mhanational.org/mental-health-learning-hub/" class="resource-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2>About This Research</h2>
+                <div class="flex-container">
+                    <div class="text-content">
+                        <p>This research explores the potential of mentorship programs as a proactive approach to supporting mental health among undergraduate students, with a focus on the experiences of specific subgroups.</p>
+                        <p>By examining the impact of academic pressures, social transitions, and cultural adjustments, this research seeks to develop strategies for universities to create inclusive and supportive learning environments.</p>
+                        <p>The findings suggest that mentorship programs offer a reasonable alternative to traditional, reactive systems of mental health care by establishing enduring, preventive support through peer connection, academic guidance, and emotional mentoring.</p>
+                        <a href="#" class="cta-button">Access Full Research Paper</a>
+                    </div>
+                    <div class="researcher-info">
+                        <div class="researcher-photo">
+                        </div>
+                        <h3>Researcher Information</h3>
+                        <p>Rustam Israilov</p>
+                        <p>Computer Science</p>
+                        <p>University of Miami</p>
+                        <div class="contact">
+                            <a href="mailto:researcher@example.com"><i class="fas fa-envelope"></i> Email</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Undergraduate Mental Health Research Project</p>
+            <p>This website was created as a multimodal adaptation of academic research.</p>
+            <div class="references">
+                <h4>References</h4>
+                <p>Bryant, J., & Welding, L. (2024). College Student Mental Health Statistics. BestColleges.</p>
+                <p>Cheung, K. (2020). Depression, Anxiety and Stress in Different Subgroups of First-Year University Students from 4-Year Cohort Data. Journal of Affective Disorders, 274, 305–314.</p>
+                <p>Maji, S., et al. (2024). Mental Health Consequences of Academic Stress, Amotivation, and Coaching Experience: A Study of India's Top Engineering Undergraduates. Psychology in the Schools, 61(9).</p>
+                <p>Bono, T. (2021). How Can We Solve the College Student Mental Health Crisis? TEDxWUSTL.</p>
+                <p>Abrams, Z. (2022). Student Mental Health Is in Crisis. Campuses Are Rethinking Their Approach. American Psychological Association.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
