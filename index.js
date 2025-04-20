@@ -50,52 +50,167 @@ const setupInteractiveElements = () => {
     }
 }
 
-// Create the self-assessment tool
+// Create the comprehensive self-assessment tool
 const createAssessmentForm = (container) => {
-    const questions = [
+    // Define assessment categories and questions
+    const assessmentData = [
         {
-            question: "How often do you feel overwhelmed by academic pressure?",
-            options: ["Never", "Rarely", "Sometimes", "Often", "Always"]
+            category: "Academic Stress",
+            icon: "fas fa-book",
+            description: "Evaluates how academic demands and expectations are affecting your mental wellbeing",
+            questions: [
+                {
+                    question: "How often do you feel overwhelmed by your academic workload?",
+                    options: ["Never", "Rarely", "Sometimes", "Often", "Almost always"]
+                },
+                {
+                    question: "How difficult is it for you to maintain focus during study sessions?",
+                    options: ["Not difficult", "Slightly difficult", "Somewhat difficult", "Very difficult", "Extremely difficult"]
+                },
+                {
+                    question: "How often do you procrastinate on assignments due to feeling overwhelmed?",
+                    options: ["Never", "Rarely", "Sometimes", "Often", "Almost always"]
+                },
+                {
+                    question: "How concerned are you about your academic performance?",
+                    options: ["Not concerned", "Slightly concerned", "Moderately concerned", "Very concerned", "Extremely concerned"]
+                }
+            ]
         },
         {
-            question: "How well do you feel connected to your academic community?",
-            options: ["Very connected", "Somewhat connected", "Neutral", "Somewhat disconnected", "Very disconnected"]
+            category: "Social Connection",
+            icon: "fas fa-users",
+            description: "Measures your sense of belonging and social support within your academic community",
+            questions: [
+                {
+                    question: "How connected do you feel to other students at your institution?",
+                    options: ["Very connected", "Somewhat connected", "Neutral", "Somewhat disconnected", "Very disconnected"]
+                },
+                {
+                    question: "How comfortable are you reaching out to peers when you need support?",
+                    options: ["Very comfortable", "Somewhat comfortable", "Neutral", "Somewhat uncomfortable", "Very uncomfortable"]
+                },
+                {
+                    question: "How often do you participate in social activities or events on campus?",
+                    options: ["Very frequently", "Frequently", "Sometimes", "Rarely", "Never"]
+                },
+                {
+                    question: "Do you have people you can rely on when facing challenges?",
+                    options: ["Definitely yes", "Probably yes", "Not sure", "Probably not", "Definitely not"]
+                }
+            ]
         },
         {
-            question: "How often do you have trouble sleeping due to academic stress?",
-            options: ["Never", "Rarely", "Sometimes", "Often", "Always"]
-        },
-        {
-            question: "Do you have access to mentors who understand your specific challenges?",
-            options: ["Definitely yes", "Somewhat yes", "Unsure", "Somewhat no", "Definitely no"]
-        },
-        {
-            question: "Are you a transfer student, international student, or student athlete?",
-            options: ["Yes, transfer student", "Yes, international student", "Yes, student athlete", "No", "Prefer not to say"]
+            category: "Personal Wellbeing",
+            icon: "fas fa-heart",
+            description: "Assesses your general mental health status, including sleep, self-care, and emotional regulation",
+            questions: [
+                {
+                    question: "How would you rate your overall sleep quality?",
+                    options: ["Excellent", "Good", "Fair", "Poor", "Very poor"]
+                },
+                {
+                    question: "How often do you engage in self-care activities (exercise, hobbies, relaxation)?",
+                    options: ["Daily", "Several times a week", "Once a week", "Rarely", "Never"]
+                },
+                {
+                    question: "How difficult is it for you to manage stress?",
+                    options: ["Not difficult", "Slightly difficult", "Moderately difficult", "Very difficult", "Extremely difficult"]
+                },
+                {
+                    question: "How often do you experience persistent negative thoughts or emotions?",
+                    options: ["Never", "Rarely", "Sometimes", "Often", "Almost always"]
+                }
+            ]
         }
     ];
-    
+
+    // Student profile questions
+    const profileQuestions = [
+        {
+            question: "Which best describes your current academic situation?",
+            options: ["First-year student", "Transfer student", "International student", "Student-athlete", "Returning/continuing student", "Other"]
+        },
+        {
+            question: "What is your primary field of study?",
+            options: ["STEM", "Humanities", "Business", "Arts", "Social Sciences", "Health Sciences", "Undecided/Other"]
+        },
+        {
+            question: "How many credit hours are you currently taking?",
+            options: ["Less than 12", "12-15", "16-18", "More than 18"]
+        }
+    ];
+
+    // Create the form HTML
     let formHTML = '<form id="mentalHealthAssessment">';
     
-    questions.forEach((q, index) => {
-        formHTML += `<div class="question-block">
-            <p class="question">${index + 1}. ${q.question}</p>
-            <div class="options-group">`;
+    // Add assessment categories
+    assessmentData.forEach((category, catIndex) => {
+        formHTML += `
+            <div class="assessment-category">
+                <h4><i class="${category.icon}"></i> ${category.category}</h4>
+                <p class="category-description">${category.description}</p>
+        `;
+        
+        // Add questions for this category
+        category.questions.forEach((q, qIndex) => {
+            const questionId = `cat${catIndex}_q${qIndex}`;
+            
+            formHTML += `
+                <div class="question-block">
+                    <p class="question">${q.question}</p>
+                    <div class="options-group">
+            `;
+            
+            // Add options for this question
+            q.options.forEach((option, optIndex) => {
+                formHTML += `
+                    <label class="option-label">
+                        <input type="radio" name="${questionId}" value="${optIndex}" required>
+                        <span class="option-text">${option}</span>
+                    </label>
+                `;
+            });
+            
+            formHTML += `
+                    </div>
+                </div>
+            `;
+        });
+        
+        formHTML += '</div>';
+    });
+    
+    // Add profile questions
+    formHTML += `<div class="assessment-category">
+        <h4><i class="fas fa-user-circle"></i> Your Profile</h4>
+        <p class="category-description">This information helps tailor recommendations to your specific circumstances</p>
+    `;
+    
+    profileQuestions.forEach((q, index) => {
+        formHTML += `
+            <div class="question-block">
+                <p class="question">${q.question}</p>
+                <div class="options-group">
+        `;
         
         q.options.forEach((option, optIndex) => {
             formHTML += `
                 <label class="option-label">
-                    <input type="radio" name="question${index}" value="${optIndex}">
+                    <input type="radio" name="profile${index}" value="${optIndex}" required>
                     <span class="option-text">${option}</span>
-                </label>`;
+                </label>
+            `;
         });
         
-        formHTML += `</div>
-        </div>`;
+        formHTML += `
+                </div>
+            </div>
+        `;
     });
     
-    formHTML += `
-        <button type="submit" class="submit-button">Get Recommendations</button>
+    formHTML += `</div>
+        <button type="submit" class="submit-button">Get Personalized Assessment</button>
     </form>
     <div id="assessmentResults" style="display: none;"></div>`;
     
@@ -105,57 +220,211 @@ const createAssessmentForm = (container) => {
     document.getElementById('mentalHealthAssessment').addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Calculate a simple score (this would be more sophisticated in real implementation)
-        let needsMentorship = false;
-        let needsCounseling = false;
-        
-        // Check responses to determine recommendations
-        const responses = questions.map((_, index) => {
-            const selected = document.querySelector(`input[name="question${index}"]:checked`);
-            return selected ? parseInt(selected.value) : null;
+        // Calculate scores for each category
+        const scores = assessmentData.map((category, catIndex) => {
+            let totalScore = 0;
+            let answeredQuestions = 0;
+            
+            category.questions.forEach((_, qIndex) => {
+                const questionId = `cat${catIndex}_q${qIndex}`;
+                const selected = document.querySelector(`input[name="${questionId}"]:checked`);
+                
+                if (selected) {
+                    // For most questions, higher values (4) indicate more issues
+                    // For positively worded questions, we need to invert the score
+                    let score = parseInt(selected.value);
+                    
+                    // Check if this is a positively worded question that needs score inversion
+                    if ((catIndex === 1 && (qIndex === 0 || qIndex === 2 || qIndex === 3)) || 
+                        (catIndex === 2 && qIndex === 1)) {
+                        score = 4 - score; // Invert the 0-4 scale
+                    }
+                    
+                    totalScore += score;
+                    answeredQuestions++;
+                }
+            });
+            
+            // Calculate percentage
+            const maxPossibleScore = answeredQuestions * 4; // 4 is max value per question
+            const scorePercentage = (totalScore / maxPossibleScore) * 100;
+            
+            return {
+                category: category.category,
+                score: scorePercentage,
+                level: scorePercentage < 30 ? "low" : scorePercentage < 60 ? "moderate" : "high"
+            };
         });
         
-        // If scoring high on overwhelm or sleep issues, suggest counseling
-        if (responses[0] > 2 || responses[2] > 2) {
-            needsCounseling = true;
-        }
+        // Get profile information
+        const profile = {
+            studentType: profileQuestions[0].options[getSelectedValue('profile0')],
+            fieldOfStudy: profileQuestions[1].options[getSelectedValue('profile1')],
+            creditHours: profileQuestions[2].options[getSelectedValue('profile2')]
+        };
         
-        // If scoring low on connection or mentorship, suggest mentorship
-        if (responses[1] > 2 || responses[3] > 2) {
-            needsMentorship = true;
-        }
-        
-        // Display results
+        // Generate personalized recommendations
+        displayResults(scores, profile);
+    });
+    
+    // Helper function to get selected radio button value
+    const getSelectedValue = (name) => {
+        const selected = document.querySelector(`input[name="${name}"]:checked`);
+        return selected ? parseInt(selected.value) : null;
+    };
+    
+    // Display assessment results
+    const displayResults = (scores, profile) => {
         const resultsContainer = document.getElementById('assessmentResults');
         resultsContainer.style.display = 'block';
         
-        let recommendationHTML = `
-            <h3>Your Assessment Results</h3>
-            <p>Based on your responses, here are some personalized recommendations:</p>
-            <ul>`;
+        let resultsHTML = `
+            <div class="results-summary">
+                <h3>Your Mental Health Assessment Results</h3>
+                <p>Based on your responses, we've analyzed your wellbeing across three key dimensions:</p>
+                
+                <div class="dimension-scores">
+        `;
         
-        if (needsCounseling) {
-            recommendationHTML += `<li>Consider scheduling a consultation with campus counseling services to address stress and potential sleep issues.</li>`;
+        // Add score visualization for each dimension
+        scores.forEach(score => {
+            const levelClass = `score-${score.level}`;
+            const levelText = score.level === "low" ? "Good" : score.level === "moderate" ? "Moderate concern" : "High concern";
+            
+            resultsHTML += `
+                <div class="dimension-score">
+                    <div class="dimension-label">${score.category}:</div>
+                    <div class="score-bar">
+                        <div class="score-value ${levelClass}" style="width: ${score.score}%"></div>
+                    </div>
+                    <div class="score-text">${levelText}</div>
+                </div>
+            `;
+        });
+        
+        resultsHTML += `
+                </div>
+            </div>
+            
+            <h3>Personalized Recommendations</h3>
+            <p>Based on your profile as a ${profile.studentType.toLowerCase()} studying ${profile.fieldOfStudy.toLowerCase()} with ${profile.creditHours.toLowerCase()} credit hours, here are your tailored recommendations:</p>
+            
+            <div class="recommendation-block">
+        `;
+        
+        // Generate recommendations based on scores and profile
+        const recommendations = generateRecommendations(scores, profile);
+        recommendations.forEach(rec => {
+            resultsHTML += `
+                <div class="recommendation">
+                    <h5>${rec.title}</h5>
+                    <p>${rec.description}</p>
+                </div>
+            `;
+        });
+        
+        resultsHTML += `
+            </div>
+            <p class="important-note"><strong>Note:</strong> This assessment is not a clinical diagnostic tool. If you're experiencing significant distress, please contact your institution's counseling services or a mental health professional.</p>
+        `;
+        
+        resultsContainer.innerHTML = resultsHTML;
+        
+        // Scroll to results
+        resultsContainer.scrollIntoView({ behavior: 'smooth' });
+    };
+    
+    // Generate recommendations based on assessment results
+    const generateRecommendations = (scores, profile) => {
+        const recommendations = [];
+        
+        // Academic Stress Recommendations
+        const academicScore = scores.find(s => s.category === "Academic Stress");
+        if (academicScore) {
+            if (academicScore.level === "high") {
+                recommendations.push({
+                    title: "Academic Workload Management",
+                    description: "Your responses indicate significant academic stress. Consider meeting with an academic advisor to review your course load and develop a manageable study schedule that includes regular breaks and self-care time."
+                });
+                
+                // Add recommendation based on credit hours
+                if (profile.creditHours === "More than 18") {
+                    recommendations.push({
+                        title: "Credit Hour Reduction",
+                        description: "Consider reducing your course load next semester. Research shows that students with excessive credit hours experience significantly higher levels of burnout and reduced academic performance."
+                    });
+                }
+            } else if (academicScore.level === "moderate") {
+                recommendations.push({
+                    title: "Study Skills Enhancement",
+                    description: "You're experiencing moderate academic stress. Explore resources at your campus learning center for study skills workshops, time management techniques, and academic coaching to help manage your workload more effectively."
+                });
+            }
         }
         
-        if (needsMentorship) {
-            recommendationHTML += `<li>You might benefit from joining a mentorship program like the First-Year Fellows (FYF) to increase your sense of connection and support.</li>`;
+        // Social Connection Recommendations
+        const socialScore = scores.find(s => s.category === "Social Connection");
+        if (socialScore) {
+            if (socialScore.level === "high") {
+                // Tailored recommendation based on student type
+                if (profile.studentType === "International student") {
+                    recommendations.push({
+                        title: "International Student Community",
+                        description: "As an international student, building social connections can be challenging. Consider joining your institution's international student association or cultural groups, and explore mentor programs specifically designed for international students."
+                    });
+                } else if (profile.studentType === "Transfer student") {
+                    recommendations.push({
+                        title: "Transfer Student Networking",
+                        description: "Transfer students often face unique challenges in establishing social connections. Look into transfer student organizations and peer mentoring programs at your institution to connect with others who share similar experiences."
+                    });
+                } else {
+                    recommendations.push({
+                        title: "Social Connection Building",
+                        description: "Your responses indicate feelings of social isolation. Consider joining student organizations related to your interests or major, attending campus events, or participating in study groups to build meaningful connections."
+                    });
+                }
+            }
         }
         
-        // Add specific recommendations based on student type (question 5)
-        if (responses[4] === 0) { // Transfer student
-            recommendationHTML += `<li>As a transfer student, connect with specific transfer student resources and peer mentors who understand the unique challenges of "transfer shock".</li>`;
-        } else if (responses[4] === 1) { // International student
-            recommendationHTML += `<li>As an international student, cultural adjustment resources and international student mentors could help with acculturation difficulties.</li>`;
-        } else if (responses[4] === 2) { // Student athlete
-            recommendationHTML += `<li>Student-athlete specific mental health resources can help balance the demands of academics and athletic performance.</li>`;
+        // Personal Wellbeing Recommendations
+        const wellbeingScore = scores.find(s => s.category === "Personal Wellbeing");
+        if (wellbeingScore) {
+            if (wellbeingScore.level === "high") {
+                recommendations.push({
+                    title: "Mental Health Support",
+                    description: "Your responses suggest significant concerns with personal wellbeing, including possible difficulties with sleep, stress management, or emotional regulation. We strongly recommend connecting with your campus counseling center for support."
+                });
+            } else if (wellbeingScore.level === "moderate") {
+                recommendations.push({
+                    title: "Wellness Practices",
+                    description: "Consider incorporating regular self-care practices into your routine, such as mindfulness meditation, physical activity, or journaling. These practices can help manage stress and improve overall wellbeing."
+                });
+            }
+            
+            // Sleep-specific recommendation if applicable
+            if (wellbeingScore.level === "high" || wellbeingScore.level === "moderate") {
+                recommendations.push({
+                    title: "Sleep Hygiene Improvement",
+                    description: "Prioritize healthy sleep habits by maintaining a consistent sleep schedule, creating a relaxing bedtime routine, limiting screen time before bed, and creating a comfortable sleep environment."
+                });
+            }
         }
         
-        recommendationHTML += `</ul>
-            <p>Remember, seeking help is a sign of strength. Many students face similar challenges, and resources are available to support you.</p>`;
+        // Field of study specific recommendation
+        if (profile.fieldOfStudy === "STEM") {
+            recommendations.push({
+                title: "STEM-Specific Support",
+                description: "STEM fields often involve high workloads and pressure. Consider joining a study group or seeking peer tutoring to manage challenging coursework. Look for mentorship opportunities with upper-level students or faculty in your field."
+            });
+        } else if (profile.fieldOfStudy === "Arts") {
+            recommendations.push({
+                title: "Creative Expression for Wellbeing",
+                description: "As an arts student, consider using your creative practices not only for academic work but also as a therapeutic outlet for stress and emotional expression."
+            });
+        }
         
-        resultsContainer.innerHTML = recommendationHTML;
-    });
+        return recommendations;
+    };
 }
 
 // Create the resource finder tool
@@ -472,7 +741,7 @@ const setupSmoothScrolling = () => {
 document.addEventListener('DOMContentLoaded', () => {
     navSlide();
     setupInteractiveElements();
-    createCharts(); // Add this line to create charts
+    createCharts();
     setupScrollAnimations();
     setupAudioPlayer();
     setupSmoothScrolling();

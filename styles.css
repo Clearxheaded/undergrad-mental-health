@@ -481,23 +481,21 @@ blockquote cite {
 #assessmentResults {
     margin-top: 30px;
     padding: 20px;
-    background-color: #f0f7ff;
-    border-left: 4px solid var(--primary-color);
+    background-color: #f9fbff;
     border-radius: var(--border-radius);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--primary-color);
 }
 
 #assessmentResults h3 {
     color: var(--primary-color);
     margin-bottom: 15px;
+    font-size: 1.5rem;
+    padding-left: 15px;
 }
 
-#assessmentResults ul {
-    padding-left: 20px;
-    margin-bottom: 20px;
-}
-
-#assessmentResults li {
-    margin-bottom: 10px;
+#assessmentResults p {
+    padding-left: 15px;
 }
 
 /* Testimonials Section */
@@ -837,6 +835,191 @@ blockquote cite {
 .metrics-highlight {
     width: 100%;
     margin-top: 0;
+}
+
+/* Assessment Features Section */
+.assessment-features {
+    display: flex;
+    justify-content: space-around;
+    margin: 25px 0;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    background-color: #f0f7ff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: var(--shadow);
+}
+
+.feature i {
+    margin-right: 10px;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.feature span {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.assessment-category {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.assessment-category h4 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+}
+
+.assessment-category h4 i {
+    margin-right: 10px;
+    background: var(--secondary-color);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.category-description {
+    font-style: italic;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.results-summary {
+    background: #f8f9ff;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 25px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.results-summary h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    position: relative;
+    padding-left: 15px;
+}
+
+.results-summary h3:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+.dimension-scores {
+    margin-top: 20px;
+}
+
+.dimension-score {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.dimension-label {
+    width: 180px;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.score-bar {
+    flex-grow: 1;
+    height: 12px;
+    background: #e9ecef;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 15px;
+}
+
+.score-value {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 6px;
+}
+
+.score-text {
+    width: 120px;
+    text-align: right;
+    font-weight: 500;
+}
+
+.score-low {
+    background: #28a745;
+}
+
+.score-moderate {
+    background: #ffc107;
+}
+
+.score-high {
+    background: #dc3545;
+}
+
+.recommendation-block {
+    margin-top: 30px;
+}
+
+.recommendation {
+    background: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    box-shadow: var(--shadow);
+    position: relative;
+    padding-left: 25px;
+}
+
+.recommendation:before {
+    content: "•";
+    position: absolute;
+    left: 10px;
+    top: 18px;
+    font-size: 18px;
+    color: var(--primary-color);
+}
+
+.recommendation h5 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.resource-link-block {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    padding: 10px;
+    background: #f0f5ff;
+    border-radius: var(--border-radius);
+}
+
+.resource-link-block i {
+    margin-right: 10px;
+    color: var(--primary-color);
+    font-size: 1.2rem;
 }
 
 /* Footer */
