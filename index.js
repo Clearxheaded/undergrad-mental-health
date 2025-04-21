@@ -50,6 +50,18 @@ const setupInteractiveElements = () => {
     }
 }
 
+// Initialize all functionality when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize mobile navigation
+    navSlide();
+    
+    // Setup interactive elements
+    setupInteractiveElements();
+    
+    // Set body to loaded to trigger fade-in animation
+    document.body.classList.add('loaded');
+});
+
 // Create the comprehensive self-assessment tool
 const createAssessmentForm = (container) => {
     // Define assessment categories and questions

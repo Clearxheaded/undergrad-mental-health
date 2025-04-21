@@ -169,6 +169,70 @@ nav {
     transition: var(--transition);
 }
 
+/* Specifically target mobile navigation */
+@media screen and (max-width: 1024px) {
+    .nav-links {
+        position: fixed;
+        right: 0;
+        height: 100vh;
+        top: 0;
+        background-color: var(--primary-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+        z-index: 1001;
+        padding: 10rem 0;
+    }
+    
+    .nav-links li {
+        opacity: 0;
+        padding: 2rem 0;
+    }
+    
+    .burger {
+        display: block;
+        z-index: 1002;
+    }
+    
+    .nav-active {
+        transform: translateX(0%) !important;
+    }
+    
+    .nav-active li {
+        opacity: 1 !important;
+    }
+}
+
+/* Navigation animations */
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Burger animation styles */
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
 /* Hero Section */
 .hero {
     background: linear-gradient(rgba(42, 67, 101, 0.85), rgba(42, 67, 101, 0.95)), url('https://images.unsplash.com/photo-1517486808906-6ca8b3f8e1c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80');
@@ -848,6 +912,28 @@ footer {
     
     .filter-group {
         width: 100%;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .flex-container {
+        flex-direction: column;
+    }
+    
+    .text-content, .media-content {
+        width: 100%;
+        padding: 0;
+    }
+    
+    .finding-card, .resource-card, .benefit-card {
+        width: 100%;
+        margin: 1rem 0;
+    }
+    
+    .cards-container, .benefits-grid, .resources-grid {
+        grid-template-columns: 1fr;
     }
 }
 
