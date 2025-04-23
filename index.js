@@ -26,24 +26,34 @@ const navSlide = () => {
 const setupInteractiveElements = () => {
     const assessmentButton = document.getElementById('assessmentButton');
     const assessmentContent = document.getElementById('assessmentContent');
-    const resourceFinderButton = document.getElementById('resourceFinderButton');
-    const resourceFinderContent = document.getElementById('resourceFinderContent');
     
     if (assessmentButton && assessmentContent) {
+        assessmentContent.style.display = 'none';
+        
         assessmentButton.addEventListener('click', () => {
-            assessmentContent.style.display = assessmentContent.style.display === 'block' ? 'none' : 'block';
+            const isCurrentlyHidden = assessmentContent.style.display === 'none' || !assessmentContent.style.display;
+            assessmentContent.style.display = isCurrentlyHidden ? 'block' : 'none';
+            
+            // Create assessment form when shown
             if (assessmentContent.style.display === 'block') {
-                // Create assessment form when shown
                 createAssessmentForm(assessmentContent);
             }
         });
     }
     
+    // Handle resourceFinderButton if it exists in your HTML
+    const resourceFinderButton = document.getElementById('resourceFinderButton');
+    const resourceFinderContent = document.getElementById('resourceFinderContent');
+    
     if (resourceFinderButton && resourceFinderContent) {
+        resourceFinderContent.style.display = 'none';
+        
         resourceFinderButton.addEventListener('click', () => {
-            resourceFinderContent.style.display = resourceFinderContent.style.display === 'block' ? 'none' : 'block';
+            const isCurrentlyHidden = resourceFinderContent.style.display === 'none' || !resourceFinderContent.style.display;
+            resourceFinderContent.style.display = isCurrentlyHidden ? 'block' : 'none';
+            
+            // Create resource finder when shown
             if (resourceFinderContent.style.display === 'block') {
-                // Create resource finder when shown
                 createResourceFinder(resourceFinderContent);
             }
         });
@@ -51,15 +61,35 @@ const setupInteractiveElements = () => {
 }
 
 // Initialize all functionality when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize mobile navigation
-    navSlide();
-    
-    // Setup interactive elements
-    setupInteractiveElements();
-    
-    // Set body to loaded to trigger fade-in animation
+document.addEventListener('DOMContentLoaded', function() {
+    // Add body loaded class for fade-in effect
     document.body.classList.add('loaded');
+    
+    // Initialize all functionality
+    navSlide();
+    setupInteractiveElements();
+    createCharts();
+    setupScrollAnimations();
+    setupAudioPlayer();
+    setupSmoothScrolling();
+    
+    // Close mobile menu when a link is clicked
+    const nav = document.querySelector('.nav-links');
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelectorAll('.nav-links li');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (nav.classList.contains('nav-active')) {
+                nav.classList.remove('nav-active');
+                burger.classList.remove('toggle');
+                
+                navLinks.forEach(link => {
+                    link.style.animation = '';
+                });
+            }
+        });
+    });
 });
 
 // Create the comprehensive self-assessment tool
@@ -748,53 +778,3 @@ const setupSmoothScrolling = () => {
         });
     });
 }
-
-// Wait for DOM to be loaded before initializing
-document.addEventListener('DOMContentLoaded', function() {
-    // Add body loaded class for fade-in effect
-    document.body.classList.add('loaded');
-    
-    // Navigation menu toggle for mobile devices
-    const burger = document.querySelector('.burger');
-    const nav = document.querySelector('.nav-links');
-    const navLinks = document.querySelectorAll('.nav-links li');
-    
-    // Toggle navigation when burger is clicked
-    burger.addEventListener('click', () => {
-        // Toggle navigation
-        nav.classList.toggle('nav-active');
-        
-        // Toggle burger animation
-        burger.classList.toggle('toggle');
-        
-        // Animate links with delay
-        navLinks.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = '';
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-            }
-        });
-    });
-    
-    // Close mobile menu when a link is clicked
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (nav.classList.contains('nav-active')) {
-                nav.classList.remove('nav-active');
-                burger.classList.remove('toggle');
-                
-                navLinks.forEach(link => {
-                    link.style.animation = '';
-                });
-            }
-        });
-    });
-    
-    navSlide();
-    setupInteractiveElements();
-    createCharts();
-    setupScrollAnimations();
-    setupAudioPlayer();
-    setupSmoothScrolling();
-});
